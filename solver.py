@@ -7,7 +7,7 @@ This is a temporary script file.
 
 import sys
 import node.py
-
+import graph.py
 
 def read_input():
     
@@ -16,7 +16,7 @@ def read_input():
     #constroi problema
     v_total = 0
     
-    edges = list()#graph
+    graph = graph()     #graph
     launches = {}
     pieces = {}   #dicionario com id ligado ao peso
     
@@ -31,10 +31,10 @@ def read_input():
             elif letter == 'L':
                 launches[words[0]] = launch(words[1], words[2],words[3])
             elif letter == 'E':
-                #   map.add_edge(Edge(words[1], words[2], words[3]))
-                continue
-    #state=       
-    problem=problema(state,launches,pieces) #retorna tbm grafo
+                graph.add_edge(words[1], words[2])
+                
+          
+    problem=problema(0,launches,pieces,graph) 
 
     return problem
 
@@ -85,7 +85,7 @@ def general_search(problem,search_type):
             
             v_sent +=1  #nao vai ser smp 1!
             
-            for x in range(len(edges):  #que nivel do edges?
+            for x in range(len(edges)):  #que nivel do edges?
                 
                 cost=g_function()
                 frontier=organize(edges[x],pai)
